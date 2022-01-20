@@ -2,6 +2,7 @@ import axios from 'axios'
 export const ADD_MENU_ITEM = 'addMenuItem'
 export const SEARCH_ITEM = 'searchItem'
 export const DELETE_ITEM = 'deleteItem'
+export const CLEAN_DROPDOWN = 'cleanDropdown'
 
 const API_KEY = '708a5f64433344e6b4c1b20bef6d12ec'
 const URL = 'https://api.spoonacular.com/food/menuItems/'
@@ -9,7 +10,7 @@ const URL = 'https://api.spoonacular.com/food/menuItems/'
 export const addMenuItem = (id) => {
   return async (dispatch) => {
     const item = await axios.get(`${URL}${id}/?apiKey=${API_KEY}`)
-    dispatch({ type: LOGIN, payload: item.data })
+    dispatch({ type: ADD_MENU_ITEM, payload: item.data })
   }
 }
 
@@ -22,4 +23,9 @@ export const searchItem = (payload) => {
 
 export const deleteItem = (id) => {
   return { type: DELETE_ITEM, payload: id }
+}
+
+export const cleanDropdown = () => {
+  console.log('se ejecuto el clean')
+  return { type: CLEAN_DROPDOWN }
 }

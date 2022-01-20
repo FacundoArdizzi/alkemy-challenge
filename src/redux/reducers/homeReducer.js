@@ -1,9 +1,14 @@
-import { ADD_MENU_ITEM, SEARCH_ITEM, DELETE_ITEM } from '../actions/homeActions'
+import { 
+  ADD_MENU_ITEM, 
+  SEARCH_ITEM, 
+  DELETE_ITEM,
+  CLEAN_DROPDOWN,
+} from '../actions/homeActions'
 const token = localStorage.getItem('token')
 
 const homeState = {
   menu: [],
-  serchDropDrown: [],
+  dropdown: [],
   auth: token.length > 1 ? true : false
 }
 
@@ -19,7 +24,11 @@ const homeReducer = (state = homeState, action) => {
     }
     case SEARCH_ITEM: return {
       ...state, 
-      searchDropDown: [action.payload]
+      dropdown: [...action.payload]
+    }
+    case CLEAN_DROPDOWN: return {
+      ...state,
+      dropdown: [],
     }
     default: return state
   }
