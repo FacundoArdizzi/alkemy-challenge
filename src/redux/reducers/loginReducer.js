@@ -7,8 +7,6 @@ const loginState = {
 }
 
 const loginReducer = (state = loginState, action) => {
-  console.log('me ejecuto')
-
   switch (action.type) {
     case SET_EMAIL: return {
       ...state, 
