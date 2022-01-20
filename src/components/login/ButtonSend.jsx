@@ -2,10 +2,10 @@ import React, { useEffect, useState }from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../redux/actions/loginActions'
 import swal from 'sweetalert'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const ButtonSend = () => {
-  const history = useHistory()
+  const navigateTo = useNavigate()
   const email = useSelector(state => state.login.email)
   const password = useSelector(state => state.login.password)
   const token = useSelector(state => state.login.token)
@@ -24,7 +24,7 @@ const ButtonSend = () => {
     } else if (token.length > 5) {
       setStatus('')
       localStorage.setItem('token', token)
-      history.push('/home')
+      navigateTo('/home')
     } 
   })
 
