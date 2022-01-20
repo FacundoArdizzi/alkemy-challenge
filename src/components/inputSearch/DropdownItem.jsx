@@ -16,7 +16,7 @@ const DropdownItem = ({ id, title }) => {
       dispatch(cleanDropdown())
     })
   }
-  console.log('yo me renderizo')
+  
   return (
     <div onClick={handleClick}>{title}</div>
   )

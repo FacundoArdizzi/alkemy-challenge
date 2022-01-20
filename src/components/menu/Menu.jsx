@@ -4,6 +4,7 @@ import MenuItem from './MenuItem'
 
 const Menu = () => {
   const menu = useSelector(state => state.home.menu)
+  console.log('menu', menu)
   
   return (
     <div>

@@ -26,6 +26,5 @@ export const deleteItem = (id) => {
 }
 
 export const cleanDropdown = () => {
-  console.log('se ejecuto el clean')
   return { type: CLEAN_DROPDOWN }
 }

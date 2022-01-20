@@ -20,7 +20,7 @@ const homeReducer = (state = homeState, action) => {
     }
     case DELETE_ITEM: return {
       ...state,
-      menu: state.menu.reduce(c => c.id !== action.payload)
+      menu: state.menu.filter(c => c.id !== action.payload)
     }
     case SEARCH_ITEM: return {
       ...state, 

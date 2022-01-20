@@ -1,11 +1,24 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import swal from 'sweetalert'
 import { deleteItem } from '../../redux/actions/homeActions'
 
 const MenuItem = ({ id, title, img }) => {
   const dispatch = useDispatch()
+  console.log(title, id)
   const handleDelete = () => {
-    dispatch(deleteItem(id))
+    swal({
+      title: 'Are you sure?',
+      text: `Are you sure you want to delete ${title} from your menu?`,
+      icon: 'warning',
+      buttons: {
+        cancel: 'cancel',
+        value: 'yes',
+      }
+    })
+    .then(response => {
+      response === null ? null : dispatch(deleteItem(id))
+    })
   }
   return (
     <div>
