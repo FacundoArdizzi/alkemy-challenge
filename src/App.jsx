@@ -1,26 +1,29 @@
 import React from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
 import { Route, Routes } from 'react-router-dom'
 import { 
-  Home, 
-  Login, 
-  SideBar 
+  Home,
+  Login,
+  Menu,
 } from './components/index'
+import { useSelector } from 'react-redux'
 
 const App = () => {
-  const auth = localStorage.getItem('token')
-  console.log('auth', auth)
+  const auth = useSelector(state => state.login.auth)
 
   return (
-    <Routes>
-      {!auth ? 
-        <Route path='/' exact element={<Login />} />
-      : 
-      <>
-        <Route path='/' element={<SideBar />} />
-        <Route path='/home' element={<Home />} /> 
-      </>
-      }
-    </Routes>
+    <ChakraProvider>
+      <Routes>
+        {auth ? 
+        <>
+          <Route path='/home' element={<Home />} />
+          <Route path='/menu' element={<Menu />} />
+        </>
+        : 
+          <Route path='/' exact element={<Login />} />
+        }
+      </Routes>
+    </ChakraProvider>
   )
 }
 

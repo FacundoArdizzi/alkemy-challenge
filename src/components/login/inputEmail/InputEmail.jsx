@@ -28,6 +28,7 @@ const InputEmail = () => {
         type="email" 
         name="email"
         value={emailValue}
+        autoComplete='off'
         minW='25vw'
         outline='none'
         variant='flushed'

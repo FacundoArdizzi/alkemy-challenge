@@ -1,7 +1,7 @@
+import { Button, Stack } from '@chakra-ui/react';
+import { ExternalLinkIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-
+import { Link, useNavigate } from "react-router-dom"
 
 const SideBar = () => {
   const navigateTo = useNavigate()
@@ -11,11 +11,30 @@ const SideBar = () => {
   }
 
   return (
-    <div>
-      <Link>Home</Link>
-      <Link>Menu</Link>
-      <button onClick={handleLogout}>Log out</button>
-    </div>
+    <Stack 
+      position='absolute'
+      left='0'
+      top='0'
+      bottom='0'
+      mr='20vw'
+      h='100vh'
+      w='20vw'
+      p='5vw' 
+      textAlign='center' 
+      justifyContent='space-between'
+    >
+      <Stack>
+        <Link to='/home'>Home</Link>
+        <Link to='/menu'>Menu</Link>
+      </Stack>
+      <Button 
+        onClick={handleLogout} 
+        rightIcon={<ExternalLinkIcon />}
+        variant='text'
+      >
+        Log out
+      </Button>
+    </Stack>
   )
 }
 

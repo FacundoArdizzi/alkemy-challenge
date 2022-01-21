@@ -1,10 +1,17 @@
+import { Heading, Stack } from '@chakra-ui/react'
 import React from 'react'
+import SideBar from '../sideBar/SideBar'
 
 const Home = () => {
   return (
-    <div>
-      <h1>Soy el home</h1>
-    </div>
+    <Stack direction='row' >
+      <Stack mr='20vw'>
+        <SideBar />
+      </Stack>
+      <Stack>
+        <Heading>Soy el home</Heading>
+      </Stack>
+    </Stack>
   )
 }
 

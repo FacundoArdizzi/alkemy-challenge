@@ -9,6 +9,7 @@ import {
 const loginState = {
   email: '', 
   password: '',
+  auth: localStorage.getItem('token'),
 }
 
 const loginReducer = (state = loginState, action) => {
