@@ -1,3 +1,4 @@
+import { useFormik } from 'formik'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import swal from 'sweetalert'
@@ -7,29 +8,28 @@ import Dropdown from './Dropdown'
 const InputSearch = () => {
   const dispatch = useDispatch()
   const dropdown = useSelector(state => state.home.dropdown)
-  const [search, setSearch] = useState('')
   const [loading, setLoading] = useState(false)
+  const [searchWord, setSearchWord] = useState('')
 
-  const handleChange = async (e) => {
-    setSearch(e.target.value)
+  const handleChange = async ({ target }) => {
+    setSearchWord(target.value)
     try {
-      if (search.length < 2) dispatch(cleanDropdown())
-      else {
+      if (searchWord.length > 2) {
         setLoading(true)
-        dispatch(searchItem(search))
+        console.log('ahora hago el dispatch')
+        /* dispatch(searchItem(formik.values.search)) */
       }
-    } catch (error) {
+    } catch (e) {
       setLoading(false)
       swal('Ups!', 'Please try again', 'error')
       dispatch(cleanDropdown())
-      setSearch('')
     }
   }
 
   return (
     <div>
-      <input type='search' onChange={handleChange} />
-      {dropdown.length > 1 && <Dropdown loading={loading} data={dropdown} />}
+      <input type='search' name='search' onChange={handleChange} value={searchWord} />
+      {loading && <Dropdown data={dropdown} />}
     </div>
   )
 }
