@@ -1,15 +1,15 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
 import { Home, Login } from './components/index'
 
 const App = () => {
-  const auth = useSelector(state => state.home.auth)
+  const auth = localStorage.getItem('token')
+
   return (
     <>
         {auth ? 
         <Routes>
-          <Route path='/' element={<Home />} /> 
+          <Route path='/home' element={<Home />} /> 
         </Routes> 
         : 
         <Routes>

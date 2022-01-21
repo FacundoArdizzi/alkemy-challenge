@@ -1,34 +1,24 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { setEmail } from '../../redux/actions/loginActions'
 
 const InputEmail = () => {
   const dispatch = useDispatch()
-  const [email, setEmailValue] = useState()
-  const [errorMessage, setError] = useState('')
+  const emailValue = useSelector(state => state.login.email)
 
   const handleChange = (e) => {
-    e.preventDefault()
-    setEmailValue(e.target.value)
-  }
-  const handleBlur = () => {
-    !email.length ? setError('This field is required') : null
-    dispatch(setEmail(email))
+    dispatch(setEmail(e.target.value))
   }
 
   return (
     <div>
       <input 
         onChange={handleChange}
-        onBlur={handleBlur}
         type="email" 
-        name="email" 
+        name="email"
+        value={emailValue}
+        placeholder='Email'
       />
-      {errorMessage && (
-        <div>
-          {errorMessage}
-        </div>
-      )}
     </div>
   )
 }

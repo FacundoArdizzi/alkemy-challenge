@@ -1,24 +1,33 @@
-import { LOGIN, SET_EMAIL, SET_PASSWORD } from "../actions/loginActions";
+import { 
+  SET_EMAIL,
+  CLEAN_EMAIL,
+  SET_PASSWORD,
+  CLEAN_PASSWORD,
+  LOGIN,
+} from "../actions/loginActions";
 
 const loginState = {
   email: '', 
   password: '',
-  token: '' ,
 }
 
 const loginReducer = (state = loginState, action) => {
   switch (action.type) {
     case SET_EMAIL: return {
       ...state, 
-      email: action.payload
+      email: state.email + action.payload
+    }
+    case CLEAN_EMAIL: return {
+      ...state, 
+      email: ''
     }
     case SET_PASSWORD: return {
       ...state, 
-      password: action.payload
+      password: state.password + action.payload
     }
-    case LOGIN: return {
-      ...state, 
-      token: action.payload,
+    case CLEAN_PASSWORD: return {
+      ...state,
+      password: '',
     }
     default: return state
   }

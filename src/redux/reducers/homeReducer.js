@@ -4,12 +4,10 @@ import {
   DELETE_ITEM,
   CLEAN_DROPDOWN,
 } from '../actions/homeActions'
-const token = localStorage.getItem('token')
 
 const homeState = {
   menu: [],
   dropdown: [],
-  auth: token.length > 1 ? true : false
 }
 
 const homeReducer = (state = homeState, action) => {
