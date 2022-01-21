@@ -15,7 +15,7 @@ const loginReducer = (state = loginState, action) => {
   switch (action.type) {
     case SET_EMAIL: return {
       ...state, 
-      email: state.email + action.payload
+      email: action.payload
     }
     case CLEAN_EMAIL: return {
       ...state, 
@@ -23,7 +23,7 @@ const loginReducer = (state = loginState, action) => {
     }
     case SET_PASSWORD: return {
       ...state, 
-      password: state.password + action.payload
+      password: action.payload
     }
     case CLEAN_PASSWORD: return {
       ...state,

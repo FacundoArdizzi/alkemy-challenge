@@ -1,22 +1,26 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Home, Login } from './components/index'
+import { 
+  Home, 
+  Login, 
+  SideBar 
+} from './components/index'
 
 const App = () => {
   const auth = localStorage.getItem('token')
+  console.log('auth', auth)
 
   return (
-    <>
-        {auth ? 
-        <Routes>
-          <Route path='/home' element={<Home />} /> 
-        </Routes> 
-        : 
-        <Routes>
-          <Route path='/' element={<Login />} />
-        </Routes>
-        }
-    </>
+    <Routes>
+      {!auth ? 
+        <Route path='/' exact element={<Login />} />
+      : 
+      <>
+        <Route path='/' element={<SideBar />} />
+        <Route path='/home' element={<Home />} /> 
+      </>
+      }
+    </Routes>
   )
 }
 

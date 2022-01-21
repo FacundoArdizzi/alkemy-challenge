@@ -4,40 +4,39 @@ import axios from 'axios'
 import { cleanEmail, cleanPassword } from '../../redux/actions/loginActions'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
+import { Button, Stack } from '@chakra-ui/react'
 
 const ButtonSend = () => {
   const navigateTo = useNavigate()
   const email = useSelector(state => state.login.email)
   const password = useSelector(state => state.login.password)
   const dispatch = useDispatch()
-  const [status, setStatus] = useState('')
-  
+  const [loading, setLoading] = useState(false)
+
   const handleClick = async () => {
-    setStatus('sending')
+    setLoading(true)
     try {
       const response = await axios.post(`http://challenge-react.alkemy.org`, { email, password })
-      setStatus('')
+      setLoading(false)
       localStorage.setItem('token', response.data.token)
       navigateTo('/home')
     } catch (e) {
       swal('Ups!', 'Please provide a valid email and password', 'error')
-      setStatus('')
+      setLoading(false)
       dispatch(cleanEmail())
       dispatch(cleanPassword())
     }
   }
 
   return(
-    <div>
-      {status === 'sending' ? (
-        <button disabled={true}>Sending</button>
-      ) : (
-        <button
-          disabled={email && password ? false : true} 
-          onClick={handleClick}
-        >Send</button>
-      )}
-    </div>
+    <Stack>
+      <Button
+        disabled={email && password ? false : true} 
+        onClick={handleClick}
+        isLoading={loading}
+        
+      >Log In</Button>
+    </Stack>
   )
 }
 
