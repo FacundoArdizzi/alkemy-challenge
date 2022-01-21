@@ -6,33 +6,39 @@ import { Link } from 'react-router-dom'
 const MenuNavBar = () => {
   return (
     <Stack 
-      w='100%' 
+      position='absolute'
+      top='0'
+      w='80vw' 
       h='fit-content' 
-      p='1rem' 
+      p='1rem 3rem' 
       borderBottom='1px solid gray' 
       direction='row'
       justifyContent='flex-end'
     >
-      <Button 
-        color='red' 
-        bg='none' 
-        border='1px solid red' 
-        outline='none'
-        _focus={{ outline: 'none' }}
-        _hover={{}}
-      >
-        <Link to='/trash'><DeleteIcon /></Link>
-      </Button>
-      <Button 
-        color='green' 
-        bg='none' 
-        border='1px solid green' 
-        outline='none'
-        _focus={{ outline: 'none' }}
-        _hover={{}}
-      >
-        <Link to='/add'><AddIcon /></Link>
-      </Button>
+      <Link to='/trash' display='hidden'>
+        <Button 
+          color='red' 
+          bg='none' 
+          border='1px solid red' 
+          outline='none'
+          _focus={{ outline: 'none' }}
+          _hover={{}}
+        >
+          <DeleteIcon />
+        </Button>
+      </Link>
+      <Link to='/add' display='hidden'>
+        <Button 
+          color='green' 
+          bg='none' 
+          border='1px solid green' 
+          outline='none'
+          _focus={{ outline: 'none' }}
+          _hover={{}}
+          >
+          <AddIcon />
+        </Button>
+      </Link>
     </Stack>
   )
 }

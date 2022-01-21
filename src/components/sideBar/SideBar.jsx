@@ -16,7 +16,7 @@ const SideBar = () => {
       left='0'
       top='0'
       bottom='0'
-      mr='20vw'
+      bg='gray'
       h='100vh'
       w='20vw'
       p='5vw' 

@@ -16,7 +16,7 @@ export const addMenuItem = (id) => {
 
 export const searchItem = (payload) => {
   return async (dispatch) => {
-    const response = await axios.get(`${URL}autocomplete?apiKey=${API_KEY}&query=${payload}&number=15`)
+    const response = await axios.get(`${URL}autocomplete?apiKey=${API_KEY}&query=${payload}&number=8`)
     dispatch({ type: SEARCH_ITEM, payload: response.data })
   }
 }
