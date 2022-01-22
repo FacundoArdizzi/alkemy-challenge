@@ -1,9 +1,10 @@
-import { Box, Button, Heading, Image, Stack } from '@chakra-ui/react'
+import { Button, Heading, Image, Stack } from '@chakra-ui/react'
 import { DeleteIcon, InfoOutlineIcon } from '@chakra-ui/icons'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import swal from 'sweetalert'
 import { deleteFromMenu, deleteFromTrash } from '../../redux/actions/menuActions'
+import { Link } from 'react-router-dom'
 
 const MenuItem = ({ id, title, img, trash }) => {
   const dispatch = useDispatch()
@@ -30,24 +31,26 @@ const MenuItem = ({ id, title, img, trash }) => {
     <Stack 
       maxW='23vw' 
       minW='23vw' 
-      minH='43vh'
-      maxH='43vh' 
+      minH='45vh'
+      maxH='45vh' 
       boxShadow='md'
       borderRadius='md' 
       overflow='hidden'
       mb='3vh'
     >
       <Image src={img} alt={title} />
-      <Stack direction='row' justifyContent='space-between'>
-        <Heading w='fit-content' ml='1vw'>{title}</Heading>
-        <Box>
+      <Stack direction='row' justifyContent='space-between' alignItems='center'>
+        <Heading w='fit-content' ml='.5vw' fontSize='1.3rem'>{title}</Heading>
+        <Stack direction='row' spacing={0} alignItems='center'>
           <Button onClick={handleDelete} color='red' w='fit-content'>
             <DeleteIcon />
           </Button>
           <Button w='fit-content'>
-            <InfoOutlineIcon />
+            <Link to={`/info/${id}`}>
+              <InfoOutlineIcon />
+            </Link>
           </Button>
-        </Box>
+        </Stack>
       </Stack>
     </Stack>
   )

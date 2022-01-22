@@ -41,6 +41,7 @@ const InputSearch = () => {
           name='search' 
           autoComplete='off'
           onChange={handleChange} 
+          onBlur={() => setSearchWord('')}
           value={searchWord} 
           border='none' 
           _focus={{ outline: 'none' }}
