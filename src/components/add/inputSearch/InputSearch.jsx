@@ -30,9 +30,9 @@ const InputSearch = () => {
     <Stack>
       <InputGroup
         w='35vw'
-        border={loading ? 'none' : '1px solid'}
-        borderColor='darkGray'
-        borderRadius={loading ? '1rem 1rem 0 0' : '0'}
+        border='1px solid'
+        borderColor='gray'
+        borderRadius='md'
         /* boxShadow='0 -3px 50px 1px rgba(0,0,0,.1)' */
       >
         <Input 

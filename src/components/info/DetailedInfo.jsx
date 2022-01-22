@@ -1,6 +1,5 @@
 import { 
   Heading, 
-  Image, 
   Stack, 
   Table, 
   Tbody, 
@@ -22,7 +21,6 @@ import InfoImg from './InfoImg'
 import Stat from './Stat'
 
 const DetailedInfo = ({ item }) => {
-  console.log('item', item)
   const { isOpen, onToggle } = useDisclosure()
   const [show, setShow] = useState(false)
   const summary = item.summary.replace(/<[^>]*>?/g, '')

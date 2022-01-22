@@ -7,6 +7,7 @@ import MenuNavBar from './MenuNavBar'
 
 const Menu = ({ trash }) => {
   const menu = useSelector(state => trash ? state.menu.trash : state.menu.menu)
+  console.log('menu', menu)
 
   useEffect(() => {
     const auth = localStorage.getItem('token')
@@ -24,10 +25,9 @@ const Menu = ({ trash }) => {
       <Stack
         w='100%' 
         mt='15vh'
-        justifyContent='space-around' 
-        flexWrap='wrap' 
-        direction='row' 
-        overflowY='scroll'
+        justifyContent='space-around'
+        direction='row'
+        flexWrap='wrap'
       >
         {menu.length === 0 ? <Heading>{`Your ${trash ? 'trash' : 'menu'} is empty`}</Heading> 
         : menu.map(c => <MenuItem
