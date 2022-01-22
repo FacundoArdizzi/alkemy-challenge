@@ -9,7 +9,6 @@ import Dropdown from './Dropdown'
 const InputSearch = () => {
   const dispatch = useDispatch()
   const dropdown = useSelector(state => state.dropdown)
-  console.log('dropdown', dropdown)
   const [loading, setLoading] = useState(false)
   const [searchWord, setSearchWord] = useState('')
 

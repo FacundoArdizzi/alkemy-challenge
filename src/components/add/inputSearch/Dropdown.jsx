@@ -3,7 +3,6 @@ import React from 'react'
 import DropdownItem from './DropdownItem'
 
 const Dropdown = ({ data }) => {
-  console.log('data', data)
   return (
     <Stack
       boxShadow='lg'

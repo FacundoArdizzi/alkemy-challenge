@@ -3,13 +3,11 @@ import {
   CLEAN_EMAIL,
   SET_PASSWORD,
   CLEAN_PASSWORD,
-  LOGIN,
 } from "../actions/loginActions";
 
 const loginState = {
   email: '', 
   password: '',
-  auth: localStorage.getItem('token'),
 }
 
 const loginReducer = (state = loginState, action) => {

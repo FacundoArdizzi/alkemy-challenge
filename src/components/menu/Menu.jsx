@@ -1,5 +1,5 @@
 import { Box, Heading, Stack } from '@chakra-ui/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import MenuItem from './MenuItem'
 import SideBar from '../sideBar/SideBar'
@@ -8,9 +8,14 @@ import MenuNavBar from './MenuNavBar'
 const Menu = ({ trash }) => {
   const menu = useSelector(state => trash ? state.menu.trash : state.menu.menu)
 
+  useEffect(() => {
+    const auth = localStorage.getItem('token')
+    if (!auth) navigateTo('/')
+  }, [])
+
   return (
     <Stack direction='row' spacing={0} pt='15vh'>
-      <Stack mr='20vw'>
+      <Stack mr='20vw' bg='gray'>
         <SideBar />
       </Stack>
       <Box>

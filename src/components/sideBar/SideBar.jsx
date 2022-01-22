@@ -12,11 +12,10 @@ const SideBar = () => {
 
   return (
     <Stack 
-      position='absolute'
+      position='fixed'
       left='0'
       top='0'
       bottom='0'
-      bg='gray'
       h='100vh'
       w='20vw'
       p='5vw' 

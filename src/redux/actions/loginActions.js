@@ -2,7 +2,7 @@ export const SET_EMAIL = 'setEmail'
 export const CLEAN_EMAIL = 'cleanEmail'
 export const SET_PASSWORD = 'setPassword'
 export const CLEAN_PASSWORD = 'cleanPassword'
-export const LOGIN = 'login'
+export const AUTH = 'auth'
 
 export const setEmail = (email) => {
   return { type: SET_EMAIL, payload: email }
@@ -18,4 +18,8 @@ export const setPassword = (password) => {
 
 export const cleanPassword = () => {
   return { type: CLEAN_PASSWORD }
+}
+
+export const auth = (payload) => {
+  return { type: AUTH, payload }
 }
