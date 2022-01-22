@@ -1,4 +1,4 @@
-import { Button, Stack } from '@chakra-ui/react';
+import { Button, Stack, Text } from '@chakra-ui/react';
 import { ExternalLinkIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom"
@@ -12,27 +12,33 @@ const SideBar = () => {
 
   return (
     <Stack 
-      position='fixed'
+      position='absolute'
       left='0'
       top='0'
       bottom='0'
-      h='100vh'
+      bg='gray'
+      h='100%'
       w='20vw'
-      p='5vw' 
       textAlign='center' 
-      justifyContent='space-between'
     >
-      <Stack>
-        <Link to='/home'>Home</Link>
-        <Link to='/menu'>Menu</Link>
+      <Stack position='fixed' justifyContent='space-between' h='100%' p='5vw' >
+        <Stack>
+          <Link to='/home' display='hidden'>
+            <Text _hover={{ color: 'primary' }}>Home</Text>
+          </Link>
+          <Link to='/menu' display='hidden'>
+            <Text _hover={{ color: 'primary' }}>Menu</Text>
+          </Link>
+        </Stack>
+        <Button 
+          onClick={handleLogout} 
+          rightIcon={<ExternalLinkIcon />}
+          variant='text'
+          _hover={{ color: 'red' }}
+        >
+          Log out
+        </Button>
       </Stack>
-      <Button 
-        onClick={handleLogout} 
-        rightIcon={<ExternalLinkIcon />}
-        variant='text'
-      >
-        Log out
-      </Button>
     </Stack>
   )
 }

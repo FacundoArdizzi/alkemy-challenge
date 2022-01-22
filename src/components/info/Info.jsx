@@ -18,11 +18,11 @@ const Info = () => {
   }, [])
 
   return (
-    <Stack direction='row'>
+    <Stack direction='row' spacing={0}>
       <Stack mr='20vw' bg='gray'>
         <SideBar />
       </Stack>
-      <Stack>
+      <Stack w='100%' alignItems='center' p={8} >
         <DetailedInfo item={item} />
       </Stack>
     </Stack>

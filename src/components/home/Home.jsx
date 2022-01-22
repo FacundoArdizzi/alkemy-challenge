@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <Stack direction='row' >
-      <Stack mr='20vw' bg='gray'>
+      <Stack mr='20vw' minH='100vh' h='100%' >
         <SideBar />
       </Stack>
       <Stack>

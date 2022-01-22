@@ -15,7 +15,7 @@ const Menu = ({ trash }) => {
 
   return (
     <Stack direction='row' spacing={0} pt='15vh'>
-      <Stack mr='20vw' bg='gray'>
+      <Stack mr='20vw' minH='100vh' h='100%'>
         <SideBar />
       </Stack>
       <Box>

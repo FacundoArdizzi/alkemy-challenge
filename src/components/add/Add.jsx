@@ -13,7 +13,7 @@ const Add = () => {
 
   return (
     <Stack direction='row' h='100vh' spacing={0}>
-      <Stack mr='20vw' bg='gray'>
+      <Stack mr='20vw' minH='100vh' h='100%'>
         <SideBar />
       </Stack>
       <Box>
