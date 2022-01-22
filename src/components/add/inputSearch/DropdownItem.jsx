@@ -3,7 +3,8 @@ import { AddIcon } from '@chakra-ui/icons'
 import React from 'react'
 import {  useDispatch } from 'react-redux'
 import swal from 'sweetalert'
-import { addMenuItem, cleanDropdown } from '../../../redux/actions/homeActions'
+import { cleanDropdown } from '../../../redux/actions/searchActions'
+import { addMenuItem } from '../../../redux/actions/menuActions'
 
 const DropdownItem = ({ id, title }) => {
   const dispatch = useDispatch()
@@ -25,7 +26,8 @@ const DropdownItem = ({ id, title }) => {
       padding='.5rem'
       justifyContent='space-between'
     >
-      <Text>{title}</Text> <AddIcon onClick={handleClick} cursor='pointer'/>
+      <Text>{title}</Text> 
+      {title !== 'Loading' ? <AddIcon onClick={handleClick} cursor='pointer'/> : null}
     </Stack>
   )
 }

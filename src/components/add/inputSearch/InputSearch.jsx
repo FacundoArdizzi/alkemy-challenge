@@ -1,14 +1,15 @@
 import { Input, InputGroup, InputRightElement, Stack } from '@chakra-ui/react'
-import { Search2Icon, SmallCloseIcon } from '@chakra-ui/icons'
+import { Search2Icon } from '@chakra-ui/icons'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import swal from 'sweetalert'
-import { cleanDropdown, searchItem } from '../../../redux/actions/homeActions'
+import { cleanDropdown, searchItem } from '../../../redux/actions/searchActions'
 import Dropdown from './Dropdown'
 
 const InputSearch = () => {
   const dispatch = useDispatch()
-  const dropdown = useSelector(state => state.home.dropdown)
+  const dropdown = useSelector(state => state.dropdown)
+  console.log('dropdown', dropdown)
   const [loading, setLoading] = useState(false)
   const [searchWord, setSearchWord] = useState('')
 
@@ -38,6 +39,7 @@ const InputSearch = () => {
         <Input 
           type='text' 
           name='search' 
+          autoComplete='off'
           onChange={handleChange} 
           value={searchWord} 
           border='none' 

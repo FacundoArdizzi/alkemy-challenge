@@ -3,6 +3,7 @@ import React from 'react'
 import DropdownItem from './DropdownItem'
 
 const Dropdown = ({ data }) => {
+  console.log('data', data)
   return (
     <Stack
       boxShadow='lg'
@@ -11,7 +12,10 @@ const Dropdown = ({ data }) => {
       position='relative'
       top='0'
     >
-      {data ? data.map(c => <DropdownItem key={c.id} id={c.id} title={c.title} />) : <div>Loading</div> }
+      {data ?
+        data.map(c => <DropdownItem id={c.id} title={c.title} key={c.id} />)
+        : <Heading>Loading</Heading>
+      }
     </Stack>
   )
 }

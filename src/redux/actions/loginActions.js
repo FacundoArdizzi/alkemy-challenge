@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export const SET_EMAIL = 'setEmail'
 export const CLEAN_EMAIL = 'cleanEmail'
 export const SET_PASSWORD = 'setPassword'

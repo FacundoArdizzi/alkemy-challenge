@@ -6,6 +6,7 @@ import {
   Login,
   Menu,
   Add,
+  Trash,
 } from './components/index'
 import { useSelector } from 'react-redux'
 import theme from './theme'
@@ -16,14 +17,15 @@ const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Routes>
-        {auth ? 
-        <>
-          <Route path='/home' element={<Home />} />
-          <Route path='/menu' element={<Menu />} />
-          <Route path='/add' element={<Add />} />
-        </>
-        : 
+        {!auth ? 
           <Route path='/' exact element={<Login />} />
+        : 
+          <>
+            <Route path='/home' element={<Home />} />
+            <Route path='/menu' element={<Menu />} />
+            <Route path='/add' element={<Add />} />
+            <Route path='/trash' element={<Trash />} />
+          </>
         }
       </Routes>
     </ChakraProvider>
