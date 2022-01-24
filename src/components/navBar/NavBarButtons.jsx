@@ -3,18 +3,9 @@ import { DeleteIcon, AddIcon } from '@chakra-ui/icons'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MenuNavBar = () => {
+const NavBarButtons = () => {
   return (
-    <Stack 
-      position='absolute'
-      top='0'
-      w='80vw' 
-      h='fit-content' 
-      p='1rem 3rem' 
-      borderBottom='1px solid gray' 
-      direction='row'
-      justifyContent='flex-end'
-    >
+    <Stack direction='row'>
       <Link to='/trash' display='hidden'>
         <Button 
           color='red' 
@@ -35,7 +26,7 @@ const MenuNavBar = () => {
           outline='none'
           _focus={{ outline: 'none' }}
           _hover={{}}
-          >
+        >
           <AddIcon />
         </Button>
       </Link>
@@ -43,4 +34,4 @@ const MenuNavBar = () => {
   )
 }
 
-export default MenuNavBar
+export default NavBarButtons

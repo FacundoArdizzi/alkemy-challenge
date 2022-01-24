@@ -27,9 +27,10 @@ const InputSearch = () => {
   }
 
   return (
-    <Stack>
+    <Stack justifyContent='center' spacing={0}>
       <InputGroup
         w='35vw'
+        m='auto'
         border='1px solid'
         borderColor='gray'
         borderRadius='md'
@@ -47,7 +48,9 @@ const InputSearch = () => {
         />
         <InputRightElement><Search2Icon /></InputRightElement>
       </InputGroup>
+      <Stack w='fit-content' m='auto'>
       {loading && <Dropdown data={dropdown} />}
+      </Stack>
     </Stack>
   )
 }

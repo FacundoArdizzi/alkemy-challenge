@@ -4,15 +4,15 @@ import {
   DELETE_FROM_TRASH,
   GET_PRICE_RATIO,
   GET_TIME_OF_PREPARATION_RATIO,
-  GET_HEALTH_SCORE_RATIO
+  GET_HEALTH_SCORE_RATIO,
 } from '../actions/menuActions'
 
 const menuState = {
   menu: [],
   trash: [],
-  priceRatio: '', 
-  timeOfPreparationRatio: '',
-  healthScoreRatio: '',
+  priceRatio: 0, 
+  timeOfPreparationRatio: 0,
+  healthScoreRatio: 0,
 }
 
 const menuReducer = (state = menuState, action) => {
@@ -24,21 +24,24 @@ const menuReducer = (state = menuState, action) => {
     case DELETE_FROM_MENU: return {
       ...state,
       menu: state.menu.filter(c => c.id !== action.payload.id),
-      trash: [action.payload ,...state.trash]
+      trash: [action.payload, ...state.trash]
     }
     case DELETE_FROM_TRASH: return {
       ...state,
       trash: state.menu.filter(c => c.id !== action.payload),
     }
-   /*  case GET_PRICE_RATIO: return {
-
+    case GET_PRICE_RATIO: return {
+      ...state,
+      priceRatio: action.payload / state.menu.length
     }
     case GET_TIME_OF_PREPARATION_RATIO: return {
-
+      ...state,
+      timeOfPreparationRatio: action.payload / state.menu.length
     }
     case GET_HEALTH_SCORE_RATIO: return {
-
-    } */
+      ...state,
+      healthScoreRatio: action.payload / state.menu.length
+    }
     default: return state
   }
 }

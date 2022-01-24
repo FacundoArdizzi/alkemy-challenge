@@ -1,13 +1,11 @@
-import { Box, Heading, Stack } from '@chakra-ui/react'
+import { Heading, Stack } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import MenuItem from './MenuItem'
-import SideBar from '../sideBar/SideBar'
-import MenuNavBar from './MenuNavBar'
+import NavBar from '../navBar/NavBar'
 
 const Menu = ({ trash }) => {
   const menu = useSelector(state => trash ? state.menu.trash : state.menu.menu)
-  console.log('menu', menu)
 
   useEffect(() => {
     const auth = localStorage.getItem('token')
@@ -15,19 +13,16 @@ const Menu = ({ trash }) => {
   }, [])
 
   return (
-    <Stack direction='row' spacing={0} pt='15vh'>
-      <Stack mr='20vw' minH='100vh' h='100%'>
-        <SideBar />
-      </Stack>
-      <Box>
-        <MenuNavBar />
-      </Box>
-      <Stack
-        w='100%' 
-        mt='15vh'
-        justifyContent='space-around'
-        direction='row'
-        flexWrap='wrap'
+    <Stack direction='row' spacing={0} pt='15vh' justifyContent='center'>
+      <NavBar />
+      <Stack 
+        mt='15vh' 
+        p='2rem' 
+        maxW='80vw' 
+        justifyContent='space-around' 
+        direction='row' 
+        flexWrap='wrap' 
+        spacing={0}
       >
         {menu.length === 0 ? <Heading>{`Your ${trash ? 'trash' : 'menu'} is empty`}</Heading> 
         : menu.map(c => <MenuItem

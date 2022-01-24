@@ -2,9 +2,9 @@ import { Stack } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import SideBar from '../sideBar/SideBar'
 import { useNavigate } from 'react-router-dom'
 import DetailedInfo from './DetailedInfo'
+import NavBar from '../navBar/NavBar'
 
 const Info = () => {
   const navigateTo = useNavigate()
@@ -18,11 +18,9 @@ const Info = () => {
   }, [])
 
   return (
-    <Stack direction='row' spacing={0}>
-      <Stack mr='20vw' bg='gray'>
-        <SideBar />
-      </Stack>
-      <Stack w='100%' alignItems='center' p={8} >
+    <Stack direction='row' spacing={0} justifyContent='center'>
+      <NavBar />
+      <Stack pt='15vh' >
         <DetailedInfo item={item} />
       </Stack>
     </Stack>

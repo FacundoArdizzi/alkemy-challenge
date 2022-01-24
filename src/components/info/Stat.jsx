@@ -23,7 +23,7 @@ const Stat = ({ children, title }) => {
 {children !== true && children !== false ? children : children == true ? <CheckIcon/> : <CloseIcon/>}
         </Text>
       </Stack>
-      <Text>{title}</Text>
+      <Text textAlign='center'>{title}</Text>
     </Stack>
   )
 }

@@ -28,8 +28,8 @@ const DetailedInfo = ({ item }) => {
   const handleText = () => setShow(!show)
 
   return (
-    <Stack w='70vw' justifyContent='space-between' direction='row'>
-      <Stack w='25vw' >
+    <Stack direction='row'>
+      <Stack w='25vw' mr='3vw'>
         <InfoImg src={item.image} alt={item.title} />
         <Stack>
           <Stack direction='row' alignItems='center' w='100%' justifyContent='space-between'>

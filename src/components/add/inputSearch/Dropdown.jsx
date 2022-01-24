@@ -8,8 +8,7 @@ const Dropdown = ({ data }) => {
       boxShadow='lg'
       borderRadius='0 0 1rem 1rem'
       w='35vw'
-      position='relative'
-      top='0'
+      m='auto'
     >
       {data ?
         data.map(c => <DropdownItem id={c.id} title={c.title} key={c.id} />)
