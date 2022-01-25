@@ -6,8 +6,8 @@ const Dropdown = ({ data }) => {
   return (
     <Stack
       boxShadow='lg'
-      borderRadius='0 0 1rem 1rem'
-      w='35vw'
+      borderRadius='1rem'
+      w={{ base: '55vw', md: '35vw'}}
       m='auto'
     >
       {data ?

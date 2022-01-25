@@ -5,15 +5,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setPassword } from '../../../redux/actions/loginActions'
 import styles from './InputPassword.module.css'
 
-const InputPassword = () => {
+export const InputPassword = () => {
   const dispatch = useDispatch()
   const passwordValue = useSelector(state => state.login.password)
   const [view, setView] = useState(false)
-  const [typing, setTyping] = useState(false)
+  const [animate, setAnimate] = useState(false)
 
   const handleChange = (e) => {
     dispatch(setPassword(e.target.value))
-    setTyping(true)
+    setAnimate(true)
   }
 
   return (
@@ -21,11 +21,12 @@ const InputPassword = () => {
       <FormLabel 
         htmlFor='password'
         position='relative'
-        bottom='-6vh'
-        className={typing ? styles.label : null}
+        bottom={{ base: '-4.5vh', md: '-6vh'}}
+        className={animate ? styles.label : null}
       >Password</FormLabel>
       <InputGroup>
         <Input 
+          onClick={() => setAnimate(true)}
           onChange={handleChange}
           type={view ? 'text' : 'password'} 
           name="password" 
@@ -49,5 +50,3 @@ const InputPassword = () => {
     </FormControl>
   )
 }
-
-export default InputPassword

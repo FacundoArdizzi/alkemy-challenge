@@ -34,7 +34,7 @@ const Home = () => {
       <NavBar />
       <Box pt='15vh'>
         <Heading textAlign='center' >Menu Ratios</Heading>
-        <Stack spacing='5rem' justifyContent='center' mt='3vh' direction='row' >
+        <Stack spacing='5vw' justifyContent='center' mt='3vh' direction={{base: 'column', md: 'row'}} >
           <Stat title='Price' children={priceRatio} />
           <Stat title='Time of Preparation' children={timeOfPreparationRatio} />
           <Stat title='Health Score' children={healthScoreRatio} />

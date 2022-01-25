@@ -13,7 +13,7 @@ const ButtonSend = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
 
-  const handleClick = async () => {
+  const handleSubmit = async () => {
     setLoading(true)
     try {
       const response = await axios.post(`http://challenge-react.alkemy.org`, { email, password })
@@ -32,8 +32,9 @@ const ButtonSend = () => {
     <Stack>
       <Button
         disabled={email && password ? false : true} 
-        onClick={handleClick}
+        onClick={handleSubmit}
         isLoading={loading}
+        onKeyPress={handleSubmit}
         
       >Log In</Button>
     </Stack>

@@ -36,10 +36,9 @@ const MenuItem = ({ id, title, img, trash }) => {
 
   return (
     <Stack 
-      maxW='23vw' 
-      minW='23vw' 
-      minH='fit-content'
-      h='40vh'
+      maxW={{ base: '42vw', md: '23vw'}} 
+      minW={{ base: '42vw', md: '23vw'}} 
+      h={{ base: 'fit-content', md: '40vh'}}
       boxShadow='lg'
       border='1px solid'
       borderColor='gray'
@@ -55,13 +54,13 @@ const MenuItem = ({ id, title, img, trash }) => {
           fontSize='1.3rem'
           textTransform='capitalize'
         >{title}</Heading>
-        <Stack direction='row' spacing={0} alignItems='center'>
+        <Stack direction='row' spacing={0} alignItems='center' p={0}>
           <Button onClick={handleDelete} color='red' w='fit-content' _focus={{outline:'none'}}>
-            <DeleteIcon />
+            <DeleteIcon w={4} h={4} />
           </Button>
-          <Button w='fit-content' _focus={{outline:'none'}}>
+          <Button w='fit-content' _focus={{outline:'none'}} p={0}>
             <Link to={`/info/${id}`}>
-              <InfoOutlineIcon />
+              <InfoOutlineIcon w={4} h={4} />
             </Link>
           </Button>
         </Stack>

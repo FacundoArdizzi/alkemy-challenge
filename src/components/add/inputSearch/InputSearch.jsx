@@ -1,4 +1,4 @@
-import { Input, InputGroup, InputRightElement, Stack } from '@chakra-ui/react'
+import { Box, Input, InputGroup, InputRightElement, Stack } from '@chakra-ui/react'
 import { Search2Icon } from '@chakra-ui/icons'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -27,9 +27,9 @@ const InputSearch = () => {
   }
 
   return (
-    <Stack justifyContent='center' spacing={0}>
+    <Stack justifyContent='center' textAlign='center' spacing={0}>
       <InputGroup
-        w='35vw'
+        w={{ base: '55vw', md: '35vw'}}
         m='auto'
         border='1px solid'
         borderColor='gray'
@@ -48,9 +48,9 @@ const InputSearch = () => {
         />
         <InputRightElement><Search2Icon /></InputRightElement>
       </InputGroup>
-      <Stack w='fit-content' m='auto'>
-      {loading && <Dropdown data={dropdown} />}
-      </Stack>
+      <Box>
+        {loading && <Dropdown data={dropdown} />}
+      </Box>
     </Stack>
   )
 }

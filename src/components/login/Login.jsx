@@ -1,6 +1,6 @@
 import React from 'react'
 import InputEmail from './inputEmail/InputEmail'
-import InputPassword from './inputPassword/InputPassword'
+import {InputPassword} from './inputPassword/InputPassword'
 import ButtonSend from './ButtonSend'
 import { Stack } from '@chakra-ui/react'
 

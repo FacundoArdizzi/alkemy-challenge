@@ -7,11 +7,10 @@ import styles from './InputEmail.module.css'
 const InputEmail = () => {
   const dispatch = useDispatch()
   const emailValue = useSelector(state => state.login.email)
-  const [typing, setTyping] = useState(false)
+  const [animate, setAnimate] = useState(false)
 
   const handleChange = (e) => {
     dispatch(setEmail(e.target.value))
-    setTyping(true)
   }
 
   return (
@@ -19,10 +18,11 @@ const InputEmail = () => {
       <FormLabel 
         htmlFor='email' 
         position='relative'
-        bottom='-6vh'
-        className={typing ? styles.label : null}
+        bottom={{ base: '-4.5vh', md: '-6vh'}}
+        className={animate ? styles.label : null}
       >Email</FormLabel>
       <Input 
+        onClick={() => setAnimate(true)}
         onChange={handleChange}
         id='email'
         type="email" 

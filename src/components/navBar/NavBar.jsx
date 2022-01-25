@@ -10,7 +10,7 @@ const NavBar = () => {
       top='0'
       w='100%' 
       h='fit-content' 
-      p='1rem 3rem' 
+      p={{ base: '2vh 3vw', md: '1rem 3rem'}} 
       borderBottom='1px solid gray' 
       direction='row'
       justifyContent='space-between'
