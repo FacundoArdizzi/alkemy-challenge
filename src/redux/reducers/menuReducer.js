@@ -10,7 +10,10 @@ import {
 const menuState = {
   menu: [],
   trash: [],
-  priceRatio: 0, 
+  sumPrices: 0,
+  sumTimeOfPreparation: 0,
+  sumHealthScore: 0,
+  priceRatio: 0,
   timeOfPreparationRatio: 0,
   healthScoreRatio: 0,
 }
@@ -19,7 +22,12 @@ const menuReducer = (state = menuState, action) => {
   switch (action.type) {
     case ADD_MENU_ITEM: return {
       ...state,
-      menu: [action.payload, ...state.menu]
+      menu: [action.payload, ...state.menu],
+      sumPrices: state.sumPrices + action.payload.pricePerServing,
+      sumTimeOfPreparation: action.payload.preparationMinutes 
+        ? state.sumTimeOfPreparation + action.payload.preparationMinutes
+        : state.sumTimeOfPreparation + action.payload.readyInMinutes,
+      sumHealthScore: state.sumHealthScore + action.payload.healthScore,
     }
     case DELETE_FROM_MENU: return {
       ...state,
@@ -30,17 +38,23 @@ const menuReducer = (state = menuState, action) => {
       ...state,
       trash: state.trash.filter(c => c.id !== action.payload),
     }
-    case GET_PRICE_RATIO: return {
+    case GET_PRICE_RATIO: 
+    let pricesAvg = state.sumPrices / state.menu.length
+    return {
       ...state,
-      priceRatio: action.payload / state.menu.length
+      priceRatio: pricesAvg.toFixed(2)
     }
-    case GET_TIME_OF_PREPARATION_RATIO: return {
+    case GET_TIME_OF_PREPARATION_RATIO: 
+    let timeAvg = state.sumTimeOfPreparation / state.menu.length
+    return {
       ...state,
-      timeOfPreparationRatio: action.payload / state.menu.length
+      timeOfPreparationRatio: timeAvg.toFixed(2)
     }
-    case GET_HEALTH_SCORE_RATIO: return {
+    case GET_HEALTH_SCORE_RATIO: 
+    let healthAvg = state.sumHealthScore / state.menu.length
+    return {
       ...state,
-      healthScoreRatio: action.payload / state.menu.length
+      healthScoreRatio: healthAvg.toFixed(2)
     }
     default: return state
   }

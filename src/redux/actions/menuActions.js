@@ -25,14 +25,14 @@ export const deleteFromTrash = (id) => {
   return { type: DELETE_FROM_TRASH, payload: id }
 }
 
-export const getPriceRatio = (sumPrices) => {
-  return { type: GET_PRICE_RATIO, payload: sumPrices }
+export const getPriceRatio = () => {
+  return { type: GET_PRICE_RATIO }
 }
 
-export const getTimeOfPreparationRatio = (sumTime) => {
-  return { type: GET_TIME_OF_PREPARATION_RATIO, payload: sumTime }
+export const getTimeOfPreparationRatio = () => {
+  return { type: GET_TIME_OF_PREPARATION_RATIO }
 }
 
-export const getHealthScoreRatio = (sumHealth) => {
-  return { type: GET_HEALTH_SCORE_RATIO, payload: sumHealth }
+export const getHealthScoreRatio = () => {
+  return { type: GET_HEALTH_SCORE_RATIO }
 }

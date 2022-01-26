@@ -20,12 +20,9 @@ const Home = () => {
     const auth = localStorage.getItem('token')
     if (!auth) navigateTo('/')
     if (menu.length > 0) {
-      let sumPrices = menu.reduce((acc,curr) => acc.pricePerServing + curr.pricePerServing)
-      dispatch(getPriceRatio(sumPrices))
-      let  sumTime = menu.reduce((acc,curr) => acc.preparationMinutes + curr.preparationMinutes)
-      dispatch(getTimeOfPreparationRatio(sumTime))
-      let sumHealth = menu.reduce((acc,curr) => acc.healthScore + curr.healthScore)
-      dispatch(getHealthScoreRatio(sumHealth))
+      dispatch(getPriceRatio())
+      dispatch(getTimeOfPreparationRatio())
+      dispatch(getHealthScoreRatio())
     }
   }, [])
 
