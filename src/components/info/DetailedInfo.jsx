@@ -28,8 +28,8 @@ const DetailedInfo = ({ item }) => {
   const handleText = () => setShow(!show)
 
   return (
-    <Stack direction='row'>
-      <Stack w='25vw' mr='3vw'>
+    <Stack direction={{ base: 'column', md: 'row'}}>
+      <Stack w={{ base: '70vw', md: '25vw'}} mr={{ base: '0', md: '3vw'}} mb={{ base: '3vh', md: '0' }}>
         <InfoImg src={item.image} alt={item.title} />
         <Stack>
           <Stack direction='row' alignItems='center' w='100%' justifyContent='space-between'>
@@ -42,8 +42,12 @@ const DetailedInfo = ({ item }) => {
           </Stack>
         </Stack>
       </Stack>
-      <Stack w='38vw'>
-          <Heading textAlign='center' textTransform='capitalize' mb='3vh'>{item.title}</Heading>
+      <Stack w={{ base: '75vw', md: '38vw'}} justifyContent='center'>
+          <Heading 
+            textAlign='center' 
+            textTransform='capitalize' 
+            mb={{ base: '1vh', md: '3vh'}}
+          >{item.title}</Heading>
           <Collapse
             in={show}
             startingHeight='20vh'
@@ -62,14 +66,17 @@ const DetailedInfo = ({ item }) => {
             {show ? <MinusIcon /> : <AddIcon />}
           </Button>
           <ButtonGroup 
+            onClick={onToggle} 
             border='1px solid' 
             borderColor='primary' 
             borderRadius='md' 
             display='flex'
             alignItems='center'
-            w='fit-content'
+            justifyContent={{ base: 'center', md: ''}}
+            w={{ base: '100%', md: 'fit-content'}}
             textAlign='center'
             transition='all .3s ease'
+            cursor='pointer'
           >
             <Button 
               onClick={onToggle} 

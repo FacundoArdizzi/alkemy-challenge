@@ -4,8 +4,9 @@ import { Box, Image } from '@chakra-ui/react'
 const InfoImg = ({ src, alt }) => {
   return (
     <Box 
-      w='25vw' 
-      mb='3vh' 
+      w={{ base: '60vw', md: '25vw' }}
+      mb='3vh'
+      mx={{ base: 'auto', md: '0' }} 
       h='fit-content'
       border='2px solid'
       borderColor='gray'

@@ -28,7 +28,7 @@ const menuReducer = (state = menuState, action) => {
     }
     case DELETE_FROM_TRASH: return {
       ...state,
-      trash: state.menu.filter(c => c.id !== action.payload),
+      trash: state.trash.filter(c => c.id !== action.payload),
     }
     case GET_PRICE_RATIO: return {
       ...state,
