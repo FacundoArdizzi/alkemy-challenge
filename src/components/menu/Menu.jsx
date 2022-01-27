@@ -37,4 +37,5 @@ const Menu = ({ trash }) => {
     </Stack>
   )
 }
+
 export default Menu

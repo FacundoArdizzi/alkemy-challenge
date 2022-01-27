@@ -1,20 +1,16 @@
-import { Button, Input, InputGroup, InputRightElement, FormControl, FormLabel } from '@chakra-ui/react'
+import { Button, Input, InputGroup, InputRightElement, FormControl, FormLabel, Text } from '@chakra-ui/react'
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setPassword } from '../../../redux/actions/loginActions'
 import styles from './InputPassword.module.css'
+import { useFormikContext } from 'formik'
 
-export const InputPassword = () => {
-  const dispatch = useDispatch()
-  const passwordValue = useSelector(state => state.login.password)
+const InputPassword = () => {
   const [view, setView] = useState(false)
-  const [animate, setAnimate] = useState(false)
-
-  const handleChange = (e) => {
-    dispatch(setPassword(e.target.value))
-    setAnimate(true)
-  }
+  const { 
+    values: { password },
+    errors,
+    handleChange 
+  } = useFormikContext()
 
   return (
     <FormControl isRequired>
@@ -22,19 +18,19 @@ export const InputPassword = () => {
         htmlFor='password'
         position='relative'
         bottom={{ base: '-4.5vh', md: '-6vh'}}
-        className={animate ? styles.label : null}
+        className={password && styles.label}
       >Password</FormLabel>
       <InputGroup>
-        <Input 
-          onClick={() => setAnimate(true)}
+        <Input
+          value={password}
           onChange={handleChange}
           type={view ? 'text' : 'password'} 
           name="password" 
-          value={passwordValue}
           autoComplete='off'
           minW='25vw'
           outline='none'
           variant='flushed'
+          _focus={{ outline: 'none' }}
         />
         <InputRightElement>
           <Button 
@@ -42,11 +38,17 @@ export const InputPassword = () => {
             bg='none' 
             border='none'
             _hover={{ bg: 'none', border: 'none' }}
+            _focus={{ outline: 'none' }}
           >
             {view ? <ViewIcon /> : <ViewOffIcon /> }
           </Button>
         </InputRightElement>
       </InputGroup>
+      {errors.password && password ? (
+        <Text color='red' fontSize='1rem' >{errors.password}</Text>
+      ) : null}
     </FormControl>
   )
 }
+
+export default InputPassword

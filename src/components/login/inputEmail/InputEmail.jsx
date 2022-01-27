@@ -1,17 +1,15 @@
-import { Input, FormControl, FormLabel } from '@chakra-ui/react'
+import { Input, FormControl, FormLabel, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setEmail } from '../../../redux/actions/loginActions'
 import styles from './InputEmail.module.css'
+import { useFormikContext } from 'formik'
 
 const InputEmail = () => {
-  const dispatch = useDispatch()
-  const emailValue = useSelector(state => state.login.email)
   const [animate, setAnimate] = useState(false)
-
-  const handleChange = (e) => {
-    dispatch(setEmail(e.target.value))
-  }
+  const {
+    values: { email },
+    errors,
+    handleChange
+  } = useFormikContext()
 
   return (
     <FormControl isRequired>
@@ -24,15 +22,19 @@ const InputEmail = () => {
       <Input 
         onClick={() => setAnimate(true)}
         onChange={handleChange}
+        value={email}
         id='email'
-        type="email" 
-        name="email"
-        value={emailValue}
+        type='email' 
+        name='email'
         autoComplete='off'
         minW='25vw'
         outline='none'
         variant='flushed'
+        _focus={{ outline: 'none' }}
       />
+      {errors.email && email ? (
+        <Text color='red' fontSize='1rem'>{errors.email}</Text>
+      ) : null}
     </FormControl>
   )
 }
