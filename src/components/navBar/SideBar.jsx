@@ -12,7 +12,7 @@ const SideBar = () => {
 
   return (
     <Stack>
-      <Button onClick={onOpen}><HamburgerIcon /></Button>
+      <Button onClick={onOpen} _focus={{outline:'none'}}><HamburgerIcon /></Button>
       <Drawer placement='left' isOpen={isOpen} onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
