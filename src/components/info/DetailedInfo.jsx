@@ -34,7 +34,7 @@ const DetailedInfo = ({ item }) => {
         <Stack>
           <Stack direction='row' alignItems='center' w='100%' justifyContent='space-between'>
             <Stat title='Health Score' children={item.healthScore} />
-            <Stat title='Cooking Minutes' children={item.cookingMinutes} />
+            <Stat title='Cooking Minutes' children={item.cookingMinutes || item.readyInMinutes} />
           </Stack>
           <Stack direction='row' alignItems='center' w='100%' justifyContent='space-between'>
             <Stat title='Vegan' children={item.vegan} />
